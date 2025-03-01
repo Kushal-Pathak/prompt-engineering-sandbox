@@ -1,24 +1,18 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.scroller::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.scroller::-webkit-scrollbar-track {
+  background: transparent; /* Color of the track */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.scroller::-webkit-scrollbar-thumb {
+  background: #777; /* Color of the thumb */
+  border-radius: 4px; /* Rounded corners for the thumb */
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.scroller::-webkit-scrollbar-thumb:hover {
+  background: #999; /* Color of the thumb on hover */
 }

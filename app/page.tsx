@@ -1,64 +1,53 @@
 export default function Home() {
   return (
-    <div className="bg-gray-800 text-white min-h-screen flex flex-col">
-      {/* 1) HEADER */}
-      <header className="bg-gray-700 p-4 flex justify-center items-center">
-        <select
-          name="model"
-          id="model"
-          className="px-3 py-1 bg-gray-800 border-2 border-gray-900 rounded-md cursor-pointer"
-        >
-          <option value="creative">Creative</option>
-          <option value="precise">Precise</option>
-          <option value="concise">Concise</option>
-        </select>
-      </header>
+    <div className="flex h-screen justify-center bg-gray-700 ">
+      <div className="flex flex-col xsm:w-full sm:w-[80%] md:w-[60%] lg:w-[55%] bg-gray-800 text-white">
+        <header className="flex justify-center p-3">
+          <select
+            name=""
+            id=""
+            className="border-2 border-gray-500 rounded-md px-2 py-1 cursor-pointer bg-gray-800"
+          >
+            <option value="">Creative</option>
+            <option value="">Precise</option>
+            <option value="">Concise</option>
+          </select>
+        </header>
+        <div className="border"></div>
 
-      {/* 2) MAIN (Conversation Area) */}
-      <main className="flex-1 overflow-y-auto p-4">
-        <div className="max-w-2xl mx-auto space-y-4">
-          {/* User message */}
-          <div className="flex justify-end">
-            <div className="bg-blue-600 px-3 py-2 rounded-xl sm:w-[90%] md:w-[60%] lg:w-[50%]">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-              beatae dolor ipsum, deserunt dignissimos asperiores, repudiandae
-              praesentium consequuntur omnis error debitis impedit nesciunt
-              dolorum similique aliquid? Recusandae culpa maxime laborum.
+        <main className="flex-1 flex flex-col p-4">
+          <p className="p-2 mb-5 bg-gray-700 rounded">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, ipsum
+            tempore fugiat odit atque error. Recusandae deserunt sed unde, optio
+            impedit nesciunt minus placeat veritatis labore reiciendis
+            reprehenderit facilis sit.
+          </p>
+          <p className="p-2 mb-5 bg-gray-700 rounded">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, ipsum
+            tempore fugiat odit atque error. Recusandae deserunt sed unde, optio
+            impedit nesciunt minus placeat veritatis labore reiciendis
+            reprehenderit facilis sit.
+          </p>
+        </main>
+        <section className="px-4">
+          <div className="bg-gray-900 rounded-md ">
+            <textarea
+              name=""
+              id=""
+              className="px-2 py-1 h-20 w-full resize-none overflow-y-auto"
+            ></textarea>
+            <div className="px-4">
+              <div className="flex justify-end pb-1">
+                <button className="bg-blue-700 px-2">Run</button>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* AI response */}
-          <div className="flex justify-start">
-            <div className="bg-gray-700 px-3 py-2 rounded-xl sm:w-[90%] md:w-[60%] lg:w-[50%]">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam
-              beatae dolor ipsum, deserunt dignissimos asperiores, repudiandae
-              praesentium consequuntur omnis error debitis impedit nesciunt
-              dolorum similique aliquid? Recusandae culpa maxime laborum.
-            </div>
-          </div>
-        </div>
-      </main>
-
-      {/* 3) PROMPT INPUT AREA */}
-      <div className="bg-gray-900 p-4">
-        <div className="max-w-2xl mx-auto">
-          <textarea
-            name="prompt"
-            className="w-full h-16 p-2 border border-gray-600 rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Type your prompt here..."
-          />
-          <div className="flex justify-end mt-2">
-            <button className="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600">
-              Run
-            </button>
-          </div>
-        </div>
+        <footer className="text-center text-sm m-4">
+          Prompt Engineering Sandbox By Kushal Pathak
+        </footer>
       </div>
-
-      {/* 4) FOOTER */}
-      <footer className="bg-purple-600 text-center p-3">
-        Prompt Engineering Sandbox By Kushal Pathak
-      </footer>
     </div>
   );
 }

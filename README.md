@@ -40,8 +40,9 @@ This web app allows the user to try AI prompts. The user can type a question or 
 - **Typing Animation:**  
   It was difficult to make the AI answer appear as if it is being typed. A timer was used to add one letter at a time.
 
-- **Error Messages:**  
-  It was a bit challenging to display error messages clearly when nothing is typed or when there is an error in the API.
+- **Auto Scroll Implementation:**  
+  Implementing auto scroll to always show the latest message was tricky. I used a React ref along with a useEffect hook to update the scroll position when new 
+  messages were added, and it took some time to get it working smoothly.
 
 - **Responsive Design:**  
   Efforts were made to ensure the app looks good on phones, tablets, laptops, and desktops by adjusting the container size.

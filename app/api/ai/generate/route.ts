@@ -52,6 +52,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (_error) {
     // Returning a 400 error if the request body is invalid
+    console.log(_error);
     return NextResponse.json(
       { error: "Invalid request body." },
       { status: 400 }

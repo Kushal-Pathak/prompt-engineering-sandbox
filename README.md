@@ -75,6 +75,10 @@ This web app allows the user to try AI prompts. The user can type a question or 
 - **Dark/Light Mode:**  
   In the future, add the ability to switch between dark and light mode.
 
+  ![My Image](others/future1.png)
+  ![My Image](others/future2.png)
+
+
 ## How to Run the App
 
 1. **Clone the Repository:**

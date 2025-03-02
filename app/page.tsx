@@ -89,7 +89,7 @@ export default function Home() {
       }
       // Simulate typing the AI's response into the conversation.
       simulateTyping(fullText, isError);
-    } catch (error) {
+    } catch (_error) {
       // Handle network or unexpected errors.
       const fullText =
         "Network error: Unable to connect to the AI service. Please check your connection and try again.";

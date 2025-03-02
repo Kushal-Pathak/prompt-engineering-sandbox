@@ -1,50 +1,60 @@
-// app/api/ai/generate/route.ts
-
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
+    // Parse the JSON body from the request
     const { prompt, model } = await request.json();
 
-    // Basic validation
-    if (!prompt || typeof prompt !== 'string') {
+    if (
+      !prompt.trim() ||
+      !model.trim() ||
+      (model !== "Creative" && model !== "Precise" && model !== "Concise")
+    ) {
       return NextResponse.json(
-        { error: 'No valid prompt provided.' },
+        { error: "Invalid request body!" },
         { status: 400 }
       );
     }
 
-    // Mock different responses based on the selected model
-    let mockedResponse = '';
+    // Simulate an error
+    if (typeof prompt === "string" && prompt.toLowerCase().includes("error")) {
+      return NextResponse.json(
+        { error: "Oops! Something went wrong on our end. We're working to fix it—please try again later." },
+        { status: 500 }
+      );
+    }
+    console.log(`${model}: ${prompt}`);
+
+    // Generating a mocked response based on the selected model
+    let mockedResponse = "";
     switch (model) {
-      case 'Creative':
-        mockedResponse = `CREATIVE RESPONSE: I'm adding a twist of imagination to your prompt: "${prompt}"!`;
+      case "Creative":
+        mockedResponse = `Creatively responding to: "${prompt}" with a twist of innovation!`;
         break;
-      case 'Precise':
-        mockedResponse = `PRECISE RESPONSE: For the prompt "${prompt}", here is a concise, detailed answer.`;
+      case "Precise":
+        mockedResponse = `Precisely responding to: "${prompt}" with detailed analysis.`;
         break;
-      case 'Concise':
-        mockedResponse = `CONCISE RESPONSE: Summarized: "${prompt}".`;
+      case "Concise":
+        mockedResponse = `Concise answer for: "${prompt}".`;
         break;
       default:
-        mockedResponse = `DEFAULT RESPONSE: Hello from the mock AI for your prompt: "${prompt}".`;
-        break;
+        mockedResponse = `Default response for: "${prompt}"`;
     }
 
-    // You can optionally simulate an error:
-    // e.g., if prompt contains some keyword, throw a 500
-    // if (prompt.includes('error')) {
-    //   return NextResponse.json(
-    //     { error: 'Mock API Error: Something went wrong!' },
-    //     { status: 500 }
-    //   );
-    // }
-
-    return NextResponse.json({ response: mockedResponse }, { status: 200 });
+    // Return the response after the timeout
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(
+          NextResponse.json({ response: mockedResponse }, { status: 200 })
+        );
+      }, 1500);
+    });
   } catch (error) {
+    // Returning a 400 error if the request body is invalid
     return NextResponse.json(
-      { error: 'Internal server error.' },
-      { status: 500 }
+      { error: "Invalid request body." },
+      { status: 400 }
     );
   }
 }

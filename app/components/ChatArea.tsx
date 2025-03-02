@@ -1,62 +1,47 @@
 import { useEffect, useRef } from "react";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // User Avatar
-import SmartToyIcon from "@mui/icons-material/SmartToy"; // AI Avatar
+import UserMessage from "./UserMessage";
+import AIMessage from "./AIMessage";
 
+// Define the Message type with required properties.
 interface Message {
   sender: "user" | "ai";
   text: string;
   isError?: boolean;
 }
 
+// Define the props interface for the ChatArea component.
 interface ChatAreaProps {
   messages: Message[];
 }
 
+// ChatArea renders the conversation messages and auto-scrolls to the latest message.
 export default function ChatArea({ messages }: ChatAreaProps) {
+  // Create a ref for the dummy element used for scrolling.
   const endRef = useRef<HTMLDivElement>(null);
 
+  // useEffect triggers scrolling to the dummy element whenever the messages array updates.
   useEffect(() => {
-    // Scroll to the dummy div at the end of the chat messages
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   return (
     <main className="flex-1 flex flex-col p-4 overflow-y-auto scroller space-y-4">
       {messages.length === 0 ? (
+        // Display a placeholder when there are no messages.
         <p className="text-center text-gray-400">
           No messages yet. Start a conversation!
         </p>
       ) : (
+        // Map through the messages array and render either a UserMessage or AIMessage component.
         messages.map((msg, index) =>
           msg.sender === "user" ? (
-            <div
-              key={index}
-              className="flex items-start space-x-3 justify-end"
-            >
-              <p className="p-2 bg-gray-700 rounded-lg max-w-[85%] whitespace-pre-wrap">
-                {msg.text}
-              </p>
-              <span className="cursor-pointer" title="You">
-                <AccountCircleIcon className="text-blue-400 w-8 h-8" />
-              </span>
-            </div>
+            <UserMessage key={index} text={msg.text} />
           ) : (
-            <div key={index} className="flex items-start space-x-3">
-              <span className="cursor-pointer" title="AI">
-                <SmartToyIcon className="text-green-400 w-8 h-8" />
-              </span>
-              <p
-                className={`p-2 bg-gray-700 rounded-lg max-w-[85%] whitespace-pre-wrap ${
-                  msg.isError ? "text-red-600 bg-red-200" : ""
-                }`}
-              >
-                {msg.text}
-              </p>
-            </div>
+            <AIMessage key={index} text={msg.text} isError={msg.isError} />
           )
         )
       )}
-      {/* Dummy element to scroll into view */}
+      {/* Dummy element to scroll into view for auto-scrolling */}
       <div ref={endRef} />
     </main>
   );

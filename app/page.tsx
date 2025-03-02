@@ -91,6 +91,7 @@ export default function Home() {
       simulateTyping(fullText, isError);
     } catch (_error) {
       // Handle network or unexpected errors.
+      console.log(_error)
       const fullText =
         "Network error: Unable to connect to the AI service. Please check your connection and try again.";
       simulateTyping(fullText, true);

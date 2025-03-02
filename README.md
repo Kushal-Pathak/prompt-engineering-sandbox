@@ -97,7 +97,11 @@ This web app allows the user to try AI prompts. The user can type a question or 
    ```bash
    npm run dev
    ```
-5. **Lookup in browser:**
+5. **Install material UI:**
+   ```bash
+   npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
+   ```
+6. **Lookup in browser:**
    ```bash
    localhost:3000
    ```

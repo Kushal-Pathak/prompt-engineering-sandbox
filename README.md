@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prompt Engineering Sandbox
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This web app allows the user to try AI prompts. The user can type a question or command, choose a model (such as Creative, Precise, or Concise), and then see a fake AI answer that appears with a typing effect.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Design Choices and UI/UX
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Simple and Easy:**  
+  The design is very simple so that any user can use it without much confusion.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Dark Look:**  
+  The app uses dark colors which are good for the eyes, especially in a dark room.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Fast Feedback:**  
+  When the user sends a prompt, the app shows "Loading..." quickly and then the answer appears as if it is being typed.
 
-## Learn More
+- **Keyboard Use:**  
+  The user can press Enter to send a prompt (and if Shift+Enter is used, a new line is created).
 
-To learn more about Next.js, take a look at the following resources:
+## Component Structure and State Management
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Components:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+  - **Header:**  
+    This section displays the dropdown to choose the AI model.
+  - **ChatArea:**  
+    This area displays the messages from the user and the AI.
+  - **PromptArea:**  
+    This section is where the user types a prompt and clicks the button to send it.
+  - **Footer:**  
+    A simple footer that shows extra information.
 
-## Deploy on Vercel
+- **State Management:**
+  - The main page keeps track of the text the user types, the chat messages, whether the app is busy (loading), and which AI model is selected.
+  - A small trick using a reference is used to know which message to update when showing the typing animation.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Challenges Faced
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Typing Animation:**  
+  It was difficult to make the AI answer appear as if it is being typed. A timer was used to add one letter at a time.
+
+- **Error Messages:**  
+  It was a bit challenging to display error messages clearly when nothing is typed or when there is an error in the API.
+
+- **Responsive Design:**  
+  Efforts were made to ensure the app looks good on phones, tablets, laptops, and desktops by adjusting the container size.
+
+## Future Ideas and Improvements
+
+- **Chat Management:**  
+  Add features to create new chats, store chat history, and allow users to delete chats.
+
+- **Search Functionality:**  
+  In the future, add the ability to search old chats.
+
+- **Prompt History:**  
+  Store prompt history for each chat and allow users to copy, use, or delete prompts.
+
+- **AI Response Actions:**  
+  Add an option to copy the AI response.
+
+- **Prompt Refinement:**  
+  Include a button to refine prompts before running, which provides refined prompt suggestions.
+
+- **Template Management:**  
+  Add features for saving, using, deleting, editing, and exporting prompt templates.
+
+- **Voice Input:**  
+  Also add voice input so that users can speak their prompts.
+
+- **File Upload:**  
+  In the future, add the ability to upload files.
+
+- **Dark/Light Mode:**  
+  In the future, add the ability to switch between dark and light mode.
+
+## How to Run the App
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone git@github.com:Kushal-Pathak/prompt-engineering-sandbox.git
+   ```
+
+2. **Switch to project directory:**
+
+   ```bash
+   cd prompt-engineering-sandbox
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+4. **Run the local server:**
+   ```bash
+   npm run dev
+   ```
+5. **Lookup in browser:**
+   ```bash
+   localhost:3000
+   ```
